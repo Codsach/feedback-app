@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,10 +12,11 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://codsach_user:codsach_22@codsach.xpy4x0p.mongodb.net/?retryWrites=true&w=majority&appName=Codsach', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 
 // Mongoose schema & model
 const MessageSchema = new mongoose.Schema({
